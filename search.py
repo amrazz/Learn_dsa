@@ -28,3 +28,15 @@ def binary_search(arr, target):
 
 print(binary_search(arr, target))
 print(linear_search(arr, target))
+
+
+def fibnocci(n):
+    if n == 0 or n == 1:
+        return 1
+    return fibnocci(n-1) + fibnocci(n-2)
+
+print(fibnocci(8))
+
+
+
+    

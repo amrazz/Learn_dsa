@@ -11,6 +11,11 @@ stack has 4 methods
 4.Isempty :-tells you whether the stack is empty or not.
 """
 
+"""
+Stack OverFlow: when the stack exeeds the limit and overflow
+"""
+
+
 """STACK IMPLEMENTATION"""
 
 # stack = []
@@ -78,13 +83,49 @@ Ways to implement stack :-
 
 """       from queue import Lifoqueue           """
 
-from queue import LifoQueue
+# from queue import LifoQueue
 
 
-stack = LifoQueue(1)
-stack.put(354)
-stack.get()
-stack.get(timeout=3)
+# stack = LifoQueue(1)
+# stack.put(354)
+# stack.get()
+# stack.get(timeout=3)
 
-elements = list(stack.queue)
-print(elements)
+# elements = list(stack.queue)
+# print(elements)
+
+
+class Stack:
+    def __init__(self):
+        self.stack = []
+
+    def is_empty(self):
+        return len(self.stack) == 0
+
+    def push(self, item):
+        self.stack.append(item)
+
+    def pop(self):
+        if not self.is_empty():
+            return self.stack.pop()
+
+        else:
+            return "Stack is empty!!"
+
+
+def reverse_string(string):
+    stack = Stack()
+
+    for i in string:
+        stack.push(i)
+
+    rev_str = ""
+
+    while not stack.is_empty():
+        rev_str += stack.pop()
+
+    return rev_str
+
+
+string = "This is a new born baby!!"
+print(reverse_string(string))

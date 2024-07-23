@@ -15,3 +15,8 @@ Suppose, a user wants to declare any random size of an array, then we will not u
 instead of that a dynamic array is used. This type of memory allocation is also known as dynamic or
 run-time memory allocation. 
 """
+
+import array
+
+arr = array.array("i", [2, 2, 2, 2, 2])
+print(arr)

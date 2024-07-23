@@ -239,23 +239,115 @@ class LinkedList:
         self.head = head
 
 
-l = LinkedList()
-l.add_begining(2222)
-l.add_before(232, 2222)
-l.add_before(64, 2222)
-l.add_before(74, 2222)
-l.add_before(97, 2222)
-l.add_before(44, 2222)
-l.add_after(965, 2222)
-l.add_after(445, 2222)
-l.add_after(943, 2222)
-l.add_after(54, 2222)
-l.add_after(7, 2222)
+# l = LinkedList()
+# l.add_begining(2222)
+# l.add_before(232, 2222)
+# l.add_before(64, 2222)
+# l.add_before(74, 2222)
+# l.add_before(97, 2222)
+# l.add_before(44, 2222)
+# l.add_after(965, 2222)
+# l.add_after(445, 2222)
+# l.add_after(943, 2222)
+# l.add_after(54, 2222)
+# l.add_after(7, 2222)
 
-print("this is the original ")
-l.print()
-print("this is the sorted list")
-l.sorted_list()
-print("this is the reversed list")
-l.reverse()
-l.print()
+# print("this is the original ")
+# l.print()
+# print("this is the sorted list")
+# l.sorted_list()
+# print("this is the reversed list")
+# l.reverse()
+# l.print()
+
+
+# -----------------------------------------------------------------------
+
+
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.pointer = None
+
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def add_last(self, value):
+        newnode = Node(value)
+        if self.head is None:
+            self.head = newnode
+            return
+        else:
+            curr = self.head
+            while curr.pointer is not None:
+                curr = curr.pointer
+            curr.pointer = newnode
+
+    def add_begining(self, value):
+        new_node = Node(value)
+        new_node.pointer = self.head
+        self.head = new_node
+
+    def print(self):
+        if self.head is None:
+            print("This list is empty!!")
+            return
+        curr = self.head
+        while curr is not None:
+            print(curr.value, end=" --> ")
+            curr = curr.pointer
+        print("NONE")
+
+    def remove(self, value):
+        if self.head is not None:
+            if self.head.value == value:
+                self.head = self.head.pointer
+            else:
+                curr = self.head
+                while curr.pointer is not None and curr.pointer.value != value:
+                    curr = curr.pointer
+                if curr.pointer is not None:
+                    curr.pointer = curr.pointer.pointer
+
+
+# ll = LinkedList()
+# ll.add_last(222)
+# ll.add_last(322)
+# ll.add_last(111)
+# ll.add_last(8)
+# ll.add_last(54)
+# ll.add_last(309)
+# ll.add_last(99)
+# ll.add_last(7554)
+# ll.print()
+# ll.remove(111)
+# ll.remove(99)
+# ll.print()
+
+
+data = [
+    {"Name": "Danish", "age": 18, "class": "A"},
+    {"Name": "Amraz", "age": 17, "class": "B"},
+    {"Name": "Asjad", "age": 16, "class": "A"},
+    {"Name": "Jasir", "age": 15, "class": "B"},
+]
+
+store = {}
+for i in data:
+    clas = i["class"]
+    age = i["age"]
+
+    if clas not in store:
+        store[clas] = []
+    store[clas].append(age)
+
+
+avg_age = {}
+
+for clas, age in store.items():
+    avg_age[clas] = sum(age) / len(age)
+
+# for cls, avg_age in avg_age.items():
+# print(f"Average age for class {cls}: {avg_age:.2f}")
